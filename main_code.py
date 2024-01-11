@@ -22,3 +22,22 @@ con = sqlite3.connect(db_path)
 con.close()
 
 #-------------------------------------------------------#
+# DBに接続する
+con = sqlite3.connect(path + db_name)
+# print(type(con))
+
+# SQLを実行するためのオブジェクトを取得
+cur = con.cursor()
+
+# 実行したいSQLを用意する
+# テーブルを作成するSQL
+# CREATE TABLE テーブル名（カラム名 型，...）;
+sql_create_table_temperature_data_table = 'CREATE TABLE temperature_data_table(temperature_ave real, humidity_ave real, sunshine_hours real);'
+
+# 4．SQLを実行する
+cur.execute(sql_create_table_temperature_data_table)
+
+# 6．DBへの接続を閉じる
+con.close()
+
+#-------------------------------------------------------#
