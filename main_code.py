@@ -35,10 +35,11 @@ cur = con.cursor()
 # 実行したいSQLを用意する
 # テーブルを作成するSQL
 # CREATE TABLE テーブル名（カラム名 型，...）;
-sql_create_table_temperature_data = 'CREATE TABLE temperature_data(temperature_ave float, humidity_ave real, sunshine_hours float);'
+sql_create_table_temperature_data = 'CREATE TABLE temperature_data(temperature_ave real, humidity_ave real, sunshine_hours real);'
 
 # 4．SQLを実行する
 cur.execute(sql_create_table_temperature_data)
 
 # 6．DBへの接続を閉じる
 con.close()
+
