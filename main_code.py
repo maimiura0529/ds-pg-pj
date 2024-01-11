@@ -4,7 +4,7 @@ import sqlite3
 import os
 
 # ファイルパス
-path = '/Users/miuramai/last_mission.py/ds-pg-pj'
+path = '/Users/miuramai/last_mission.py/ds-pg-pj/'
 
 # DBファイル名
 db_name = 'temperature_data.sqlite'
