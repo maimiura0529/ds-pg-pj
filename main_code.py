@@ -91,6 +91,8 @@ else:
 # データベース接続をクローズ
 conn.close()
 
+#-------------------------------------------------------#
+
 # DBに接続する
 con = sqlite3.connect(path + db_name)
 # print(type(con))
@@ -105,4 +107,29 @@ cur.execute(sql_create_table_local_data)
 
 
 # 6．DBへの接続を閉じる
+con.close()
+
+#-------------------------------------------------------#
+
+# 1．DBに接続する
+con = sqlite3.connect(path + db_name)
+
+# 2．SQLを実行するためのオブジェクトを取得
+cur = con.cursor()
+
+# 3．データを挿入するSQL
+sql_insert_local_data = "INSERT INTO local_data(number_of_steps) VALUES (?);"
+
+# 4．データをリストで用意する
+new_column_data_str = "13607,25,3974,3731,18778,672,6941,7373,5225,4855,4714,4454,3116,6313,8614,4908,5996,4177,3302,1926,5681,9078,3709,5576,8181,4084,15737,5043,2075,6495,5448"
+new_column_data_list = [int(x) for x in new_column_data_str.split(',')]
+
+# 5．31行のデータを一気に挿入
+for data in new_column_data_list:
+    cur.execute(sql_insert_local_data, (data,))
+
+# 6．コミット処理（データ操作を反映させる）
+con.commit()
+
+# 7．DBへの接続を閉じる
 con.close()
