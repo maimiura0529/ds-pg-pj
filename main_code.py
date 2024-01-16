@@ -90,3 +90,19 @@ else:
 
 # データベース接続をクローズ
 conn.close()
+
+# DBに接続する
+con = sqlite3.connect(path + db_name)
+# print(type(con))
+
+# SQLを実行するためのオブジェクトを取得
+cur = con.cursor()
+
+# 新しいテーブルを作成するSQL
+sql_create_table_local_data = 'CREATE TABLE local_data(number_of_steps INTEGER);'
+cur.execute(sql_create_table_local_data)
+
+
+
+# 6．DBへの接続を閉じる
+con.close()
